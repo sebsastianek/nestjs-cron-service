@@ -1,0 +1,8 @@
+SHELL=/bin/sh
+PHP_BIN=/usr/bin/php
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+CONSOLE=/var/www/html/backend/app/console
+LOGS_DIR=/var/log/symfony
+
+# Symfony App
+38 0 * * *        root $PHP_BIN $CONSOLE command:do:something --env=prod
