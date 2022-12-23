@@ -52,14 +52,8 @@ export class CronService {
 
           const interval = parser.parseExpression(time);
           const prevExecDate = interval.prev().toDate();
-          const nextExecDate = interval.next().toDate();
-          const nextNextExecDate = interval.next().toDate();
 
-          if (
-            isSameMinute(runDate, prevExecDate) ||
-            isSameMinute(runDate, nextExecDate) ||
-            isSameMinute(runDate, nextNextExecDate)
-          ) {
+          if (isSameMinute(runDate, prevExecDate)) {
             this.logger.debug('scheduling command ' + command);
             this.logger.debug('matched time expression ' + time);
             commandsToRun.push(command);
