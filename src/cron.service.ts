@@ -17,10 +17,10 @@ export class CronService {
     const runDate = new Date();
     const cronDir = configService.getValue('CRON_DIR');
     const files = fs.readdirSync(cronDir);
-    const commandsToRun = [];
+    const commandsToRun: string[] = [];
 
     for (const file of files) {
-      const vars = {};
+      const vars: { [key: string]: string } = {};
       const readStream = fs.createReadStream(path.join(cronDir, file));
       const rl = readline.createInterface({
         input: readStream,
