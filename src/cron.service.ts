@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
+import {Interval} from '@nestjs/schedule';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as readline from 'readline';
@@ -12,7 +12,7 @@ import { configService } from './config.service';
 export class CronService {
   private readonly logger = new Logger(CronService.name);
 
-  @Cron('*/45 * * * * *')
+  @Interval(60000)
   async handleCron(): Promise<void> {
     const runDate = new Date();
     const cronDir = configService.getValue('CRON_DIR');
